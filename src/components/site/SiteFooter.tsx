@@ -52,6 +52,17 @@ export default function SiteFooter() {
       <p className='mt-8 text-center text-xs text-[color:var(--color-text-muted)]'>
         Copyrights ©2026 {companyInfo.name}.
       </p>
+      <p className='mt-2 text-center text-xs text-[color:var(--color-text-muted)]'>
+        Developed by{' '}
+        <a
+          href='https://www.linkedin.com/in/thakursatyam9415'
+          target='_blank'
+          rel='noreferrer'
+          className='font-semibold text-[color:var(--color-accent)] transition hover:underline'
+        >
+          Satyam Singh
+        </a>
+      </p>
     </footer>
   );
 }
