@@ -1,9 +1,17 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 
 import SiteFooter from '@/components/site/SiteFooter';
 import SiteHeader from '@/components/site/SiteHeader';
 
 import { companyInfo, galleryImages, metrics } from '@/constant/nishan-content';
+
+export const metadata: Metadata = {
+  title: 'About Us',
+  description:
+    'Learn about Nishan Lift Solutions, our elevator expertise, proven success metrics, and commitment to safe vertical mobility in Jaipur.',
+  alternates: { canonical: '/about' },
+};
 
 export default function AboutPage() {
   return (

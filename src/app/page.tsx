@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -11,6 +12,13 @@ import {
   productNames,
   testimonials,
 } from '@/constant/nishan-content';
+
+export const metadata: Metadata = {
+  title: 'Elevator Service in Jaipur',
+  description:
+    'Trusted elevator installation, modernization, and maintenance services in Jaipur for residential, commercial, and industrial buildings.',
+  alternates: { canonical: '/' },
+};
 
 export default function HomePage() {
   return (

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -9,6 +10,13 @@ import {
   productImages,
   productNames,
 } from '@/constant/nishan-content';
+
+export const metadata: Metadata = {
+  title: 'Products & Services',
+  description:
+    'Explore elevator cabins, doors, and premium lift service offerings from Nishan Lift Solutions for residential and commercial projects.',
+  alternates: { canonical: '/products-services' },
+};
 
 export default function ProductsServicesPage() {
   return (

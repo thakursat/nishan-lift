@@ -1,7 +1,16 @@
+import type { Metadata } from 'next';
+
 import SiteFooter from '@/components/site/SiteFooter';
 import SiteHeader from '@/components/site/SiteHeader';
 
 import { companyInfo } from '@/constant/nishan-content';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description:
+    'Read the Nishan Lift Solutions privacy policy, including information collection, usage, cookies, security, and user rights.',
+  alternates: { canonical: '/privacy-policy' },
+};
 
 const sections = [
   {
