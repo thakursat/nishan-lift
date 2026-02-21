@@ -46,6 +46,8 @@ export default function AboutPage() {
                 alt={`Gallery image ${index + 1}`}
                 width={900}
                 height={700}
+                sizes='(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 22vw'
+                quality={65}
                 className='h-36 w-full object-cover transition duration-700 hover:scale-105 sm:h-44'
                 loading='lazy'
               />

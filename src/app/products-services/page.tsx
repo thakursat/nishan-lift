@@ -56,6 +56,8 @@ export default function ProductsServicesPage() {
                 alt={product}
                 width={900}
                 height={600}
+                sizes='(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw'
+                quality={68}
                 className='h-52 w-full object-cover transition duration-700 hover:scale-105'
                 loading='lazy'
               />

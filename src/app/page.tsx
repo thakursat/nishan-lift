@@ -31,9 +31,11 @@ export default function HomePage() {
           loop
           muted
           playsInline
-          poster='/images/new-tab.png'
+          preload='metadata'
+          poster='/images/optimized/new-tab.png'
           className='absolute inset-0 h-full w-full object-cover'
         >
+          <source src='/videos/optimized/video.mp4' type='video/mp4' />
           <source src='/videos/video.mp4' type='video/mp4' />
         </video>
         <div className='absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-black/70' />
@@ -53,7 +55,7 @@ export default function HomePage() {
             <div className='animation-delay-200 animate-fade-up mt-6 flex flex-wrap justify-center gap-3'>
               <Link
                 href='/contact'
-                className='rounded-full bg-[color:var(--color-accent)] px-5 py-2.5 text-sm font-semibold text-black transition hover:opacity-90'
+                className='rounded-full bg-[color:var(--color-accent)] px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90'
               >
                 Contact Us
               </Link>
@@ -117,6 +119,8 @@ export default function HomePage() {
                 alt={product}
                 width={900}
                 height={600}
+                sizes='(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw'
+                quality={68}
                 className='h-40 w-full object-cover transition duration-700 hover:scale-105'
                 loading='lazy'
               />
@@ -148,6 +152,8 @@ export default function HomePage() {
                 alt={`Gallery image ${index + 1}`}
                 width={900}
                 height={700}
+                sizes='(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 22vw'
+                quality={65}
                 className='h-36 w-full object-cover transition duration-700 hover:scale-105 sm:h-44'
                 loading='lazy'
               />

@@ -35,31 +35,31 @@ export const productNames = [
 ];
 
 export const productImages = [
-  '/images/1.jpg',
-  '/images/2.jpg',
-  '/images/3.jpg',
-  '/images/4.jpg',
-  '/images/5.jpg',
-  '/images/6.jpg',
-  '/images/7.jpg',
-  '/images/8.jpg',
-  '/images/9.jpg',
-  '/images/10.jpg',
+  '/images/optimized/1.jpg',
+  '/images/optimized/2.jpg',
+  '/images/optimized/3.jpg',
+  '/images/optimized/4.jpg',
+  '/images/optimized/5.jpg',
+  '/images/optimized/6.jpg',
+  '/images/optimized/7.jpg',
+  '/images/optimized/8.jpg',
+  '/images/optimized/9.jpg',
+  '/images/optimized/10.jpg',
 ];
 
 export const galleryImages = [
-  '/images/1.jpg',
-  '/images/2.jpg',
-  '/images/3.jpg',
-  '/images/4.jpg',
-  '/images/5.jpg',
-  '/images/6.jpg',
-  '/images/7.jpg',
-  '/images/8.jpg',
-  '/images/9.jpg',
-  '/images/10.jpg',
-  '/images/new-tab.png',
-  '/images/logo.png',
+  '/images/optimized/1.jpg',
+  '/images/optimized/2.jpg',
+  '/images/optimized/3.jpg',
+  '/images/optimized/4.jpg',
+  '/images/optimized/5.jpg',
+  '/images/optimized/6.jpg',
+  '/images/optimized/7.jpg',
+  '/images/optimized/8.jpg',
+  '/images/optimized/9.jpg',
+  '/images/optimized/10.jpg',
+  '/images/optimized/new-tab.png',
+  '/images/optimized/logo.png',
 ];
 
 export const metrics = [

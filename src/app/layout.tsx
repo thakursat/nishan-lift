@@ -6,6 +6,7 @@ import { elevatorTheme } from '@/styles/theme';
 
 import { siteConfig } from '@/constant/config';
 import { companyInfo } from '@/constant/nishan-content';
+import AppLoader from '@/components/site/AppLoader';
 
 // !STARTERCONF Change these default meta
 // !STARTERCONF Look at @/constant/config to change them
@@ -132,6 +133,7 @@ export default function RootLayout({
         style={themeVariables}
         className='min-h-screen bg-[color:var(--color-bg)] text-[color:var(--color-text-primary)]'
       >
+        <AppLoader />
         <script
           type='application/ld+json'
           dangerouslySetInnerHTML={{
