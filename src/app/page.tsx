@@ -3,14 +3,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import SiteFooter from '@/components/site/SiteFooter';
+import GalleryImageViewer from '@/components/site/GalleryImageViewer';
 import SiteHeader from '@/components/site/SiteHeader';
+import VideoTestimonialsCarousel from '@/components/site/VideoTestimonialsCarousel';
 import {
   companyInfo,
   galleryImages,
   metrics,
   productImages,
   productNames,
-  testimonials,
+  videoTestimonials,
 } from '@/constant/nishan-content';
 
 export const metadata: Metadata = {
@@ -139,49 +141,22 @@ export default function HomePage() {
         <h2 className='mt-2 text-2xl font-semibold'>
           As many visuals as possible
         </h2>
-
-        <div className='mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4'>
-          {galleryImages.slice(0, 8).map((image, index) => (
-            <figure
-              key={image}
-              className='animate-fade rounded-2xl overflow-hidden border border-[color:var(--color-border)] bg-[color:var(--color-surface)]'
-              style={{ animationDelay: `${0.08 * index}s` }}
-            >
-              <Image
-                src={image}
-                alt={`Gallery image ${index + 1}`}
-                width={900}
-                height={700}
-                sizes='(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 22vw'
-                quality={65}
-                className='h-36 w-full object-cover transition duration-700 hover:scale-105 sm:h-44'
-                loading='lazy'
-              />
-            </figure>
-          ))}
-        </div>
+        <GalleryImageViewer images={galleryImages.slice(0, 8)} />
       </section>
 
       <section className='layout px-4 pb-12'>
         <p className='text-xs font-semibold uppercase tracking-[0.4em] text-[color:var(--color-accent)]'>
-          Why customers love {companyInfo.name}
+          Video testimonials
         </p>
-        <div className='mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-          {testimonials.map((testimonial, index) => (
-            <article
-              key={testimonial.name}
-              className='glass-panel animate-fade-up rounded-2xl p-5'
-              style={{ animationDelay: `${0.12 * index}s` }}
-            >
-              <p className='text-sm font-semibold'>{testimonial.name}</p>
-              <p className='text-xs text-[color:var(--color-text-muted)]'>
-                {testimonial.when}
-              </p>
-              <p className='mt-3 text-sm text-[color:var(--color-text-muted)]'>
-                {testimonial.text}
-              </p>
-            </article>
-          ))}
+        <h2 className='mt-2 text-2xl font-semibold'>
+          Hear directly from our customers
+        </h2>
+        <p className='mt-2 max-w-2xl text-sm text-(--color-text-muted)'>
+          Scroll through the stories to watch real customer experiences with our
+          installation, modernization, and maintenance services.
+        </p>
+        <div className='mt-5'>
+          <VideoTestimonialsCarousel items={videoTestimonials} />
         </div>
       </section>
 

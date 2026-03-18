@@ -85,3 +85,34 @@ export const testimonials = [
     text: 'Professional installation and smooth handover process.',
   },
 ];
+
+export const videoTestimonials = [
+  {
+    name: 'Rajesh M.',
+    project: 'Residential Building Lift Installation',
+    description:
+      'Smooth installation process with clear communication and timely delivery.',
+    youtubeId: 'M7lc1UVf-VE',
+  },
+  {
+    name: 'Priya K.',
+    project: 'Commercial Elevator Modernization',
+    description:
+      'Upgraded system performance has been excellent and maintenance response is quick.',
+    youtubeId: 'ysz5S6PUM-U',
+  },
+  {
+    name: 'Amit S.',
+    project: 'Office Lift AMC Support',
+    description:
+      'The service team is professional, responsive, and very reliable for regular upkeep.',
+    youtubeId: 'aqz-KE-bpKQ',
+  },
+  {
+    name: 'Neha R.',
+    project: 'Hotel Passenger Lift Project',
+    description:
+      'Great finishing quality and on-time execution with helpful after-sales support.',
+    youtubeId: 'ScMzIvxBSi4',
+  },
+];
