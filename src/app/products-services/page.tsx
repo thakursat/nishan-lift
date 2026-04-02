@@ -20,35 +20,39 @@ export const metadata: Metadata = {
 
 export default function ProductsServicesPage() {
   return (
-    <main className='bg-[color:var(--color-bg)] text-[color:var(--color-text-primary)]'>
+    <main className='relative min-h-screen bg-(--) text-(--)'>
+      {/* Global Background Pattern */}
+      <div className='fixed inset-0 z-[-1] pointer-events-none opacity-[0.03]' style={{ backgroundImage: 'radial-gradient(var(--color-text-primary) 1.5px, transparent 1.5px)', backgroundSize: '32px 32px' }}></div>
+      <div className='fixed top-0 left-0 w-[600px] h-[600px] bg-(--)/5 blur-[120px] rounded-full pointer-events-none z-[-1]'></div>
+      <div className='fixed bottom-0 right-0 w-[600px] h-[600px] bg-(--)/5 blur-[120px] rounded-full pointer-events-none z-[-1]'></div>
+
       <SiteHeader />
 
-      <section className='layout px-4 pb-10 pt-32'>
-        <p className='animate-fade text-xs font-semibold uppercase tracking-[0.45em] text-[color:var(--color-accent)]'>
-          Products
+      <section className='layout px-4 pb-12 pt-36 text-center'>
+        <p className='animate-fade text-sm font-bold uppercase tracking-widest text-(--)'>
+          Products & Services
         </p>
-        <h1 className='animate-fade-up mt-2 text-3xl font-semibold sm:text-4xl'>
-          Products by {companyInfo.name}
+        <h1 className='animate-fade-up mt-4 text-4xl font-extrabold sm:text-5xl lg:text-6xl tracking-tight'>
+          Premium Elevations by <span className='text-(--color-accent)'>{companyInfo.name}</span>
         </h1>
-        <p className='animate-fade-up mt-4 text-sm text-[color:var(--color-text-muted)] sm:text-base'>
-          Explore our carefully crafted selection of high-quality products,
-          designed to meet your needs with reliability and excellence. Find the
-          perfect solution today.
+        <p className='animate-fade-up mx-auto mt-6 max-w-2xl text-base text-(--) sm:text-lg'>
+          Explore our carefully crafted selection of high-quality lift cabins, doors,
+          and robust systems designed for performance, safety, and modern architecture.
         </p>
       </section>
 
-      <section className='layout px-4 pb-12'>
-        <h2 className='text-xl font-semibold sm:text-2xl'>
-          Best Elevator Service Products in Prithviraj Nagar (B Sector), Jaipur
-          by
-          {` ${companyInfo.name}`}
-        </h2>
+      <section className='layout px-4 pb-16'>
+        <div className='mb-10 text-center'>
+          <h2 className='text-2xl font-extrabold sm:text-3xl text-(--)'>
+            Our Curated Offerings
+          </h2>
+        </div>
 
-        <div className='mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+        <div className='mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
           {productNames.map((product, index) => (
             <article
               key={product}
-              className='glass-panel animate-zoom rounded-2xl overflow-hidden'
+              className='group glass-panel animate-zoom rounded-[2rem] overflow-hidden transition-all hover:-translate-y-2 hover:shadow-2xl'
               style={{ animationDelay: `${0.08 * index}s` }}
             >
               <Image
@@ -58,13 +62,13 @@ export default function ProductsServicesPage() {
                 height={600}
                 sizes='(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw'
                 quality={68}
-                className='h-52 w-full object-cover transition duration-700 hover:scale-105'
+                className='h-56 w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105'
                 loading='lazy'
               />
-              <div className='p-4'>
-                <h3 className='text-lg font-semibold'>{product}</h3>
-                <p className='mt-2 text-sm text-[color:var(--color-text-muted)]'>
-                  Professional finish, safe operation, and installation support
+              <div className='p-6'>
+                <h3 className='text-xl font-bold'>{product}</h3>
+                <p className='mt-3 text-sm leading-relaxed text-(--) group-hover:text-(--) transition-colors'>
+                  Professional finish, safe operation, and precision engineering
                   for residential and commercial projects.
                 </p>
               </div>
@@ -73,17 +77,21 @@ export default function ProductsServicesPage() {
         </div>
       </section>
 
-      <section className='layout px-4 pb-14'>
-        <div className='rounded-3xl bg-[color:var(--color-accent)]/10 p-7 text-center'>
-          <p className='text-sm text-[color:var(--color-text-muted)]'>
-            Need help selecting the right cabin or door finish?
-          </p>
-          <Link
-            href='/contact'
-            className='mt-4 inline-flex rounded-full bg-[color:var(--color-accent)] px-5 py-2.5 text-sm font-semibold text-black'
-          >
-            Start Exploring Now
-          </Link>
+      <section className='layout px-4 pb-20'>
+        <div className='relative overflow-hidden rounded-[2.5rem] bg-(--) border border-(--) p-10 sm:p-14 text-center shadow-xl'>
+          <div className='absolute inset-0 bg-linear-to-br from-(--)/5 to-transparent' />
+          <div className='relative z-10'>
+            <h2 className='text-3xl font-extrabold sm:text-4xl'>Need Custom Specifications?</h2>
+            <p className='mx-auto mt-4 max-w-xl text-base text-(--)'>
+              Our engineers collaborate closely to deliver bespoke finishes and specialized technical solutions.
+            </p>
+            <Link
+              href='/contact'
+              className='group mt-8 inline-flex items-center gap-2 rounded-full bg-(--color-accent) px-8 py-4 text-sm font-bold text-white shadow-lg transition-all hover:-translate-y-1 hover:bg-(--color-accent-strong) hover:shadow-[0_10px_40px_rgba(158,0,0,0.3)]'
+            >
+              Consult with Experts
+            </Link>
+          </div>
         </div>
       </section>
 

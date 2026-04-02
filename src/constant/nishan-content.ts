@@ -23,15 +23,15 @@ export const quickLinks = [
 
 export const productNames = [
   'SS Golden Cabin',
-  'SS finish',
+  'SS Finish Cabin',
   'SS Golden Finish Design',
-  'Ss Cabin',
-  'SS design cabin',
+  'SS Cabin',
+  'SS Design Cabin',
   'MS Finish Cabin',
   'SS Door',
   'SS Golden Finish Glass Door',
   'MS Finish Door',
-  'SS mirror finish glass door',
+  'SS Mirror Finish Glass Door',
 ];
 
 export const productImages = [
@@ -84,6 +84,13 @@ export const testimonials = [
     when: 'Recent',
     text: 'Professional installation and smooth handover process.',
   },
+];
+
+export const instaReels = [
+  { shortcode: 'DDg95Srhcsx' },
+  { shortcode: 'DCrPOg7BPdj' },
+  { shortcode: 'DO8_LmIEu-s' },
+  { shortcode: 'DPiZ90Wkk3p' },
 ];
 
 export const videoTestimonials = [
