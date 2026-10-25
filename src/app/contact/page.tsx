@@ -12,6 +12,7 @@ import {
   Layers,
   Mail,
   MapPin,
+  MessageCircle,
   MessageSquare,
   Package,
   Phone,
@@ -22,6 +23,7 @@ import {
 } from 'lucide-react';
 import { type ElementType, useEffect, useRef, useState } from 'react';
 
+import PageHero from '@/components/site/PageHero';
 import SiteFooter from '@/components/site/SiteFooter';
 import SiteHeader from '@/components/site/SiteHeader';
 
@@ -284,42 +286,17 @@ export default function ContactPage() {
 
   return (
     <main className='relative min-h-screen bg-(--color-bg) text-(--color-text-primary)'>
-      {/* Global Background Pattern */}
-      <div
-        className='fixed inset-0 z-[-1] pointer-events-none opacity-[0.03]'
-        style={{
-          backgroundImage:
-            'radial-gradient(var(--color-text-primary) 1.5px, transparent 1.5px)',
-          backgroundSize: '32px 32px',
-        }}
-      />
-      <div className='fixed top-0 left-0 w-150 h-150 bg-(--color-accent)/5 blur-[120px] rounded-full pointer-events-none z-[-1]' />
-      <div className='fixed bottom-0 right-0 w-150 h-150 bg-(--color-accent)/5 blur-[120px] rounded-full pointer-events-none z-[-1]' />
-
       <SiteHeader />
 
-      {/* Hero */}
-      <section className='layout px-4 pb-12 pt-36 text-center'>
-        <div className='mb-6 flex justify-center'>
-          <span className='inline-flex items-center gap-2 rounded-full border border-(--color-border) bg-(--color-surface) px-4 py-2 text-xs font-semibold uppercase tracking-widest text-(--color-accent)'>
-            <span className='relative flex h-2 w-2'>
-              <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75' />
-              <span className='relative inline-flex h-2 w-2 rounded-full bg-green-500' />
-            </span>
-            Available Now
-          </span>
-        </div>
-        <h1 className='animate-fade-up text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl'>
-          Let&apos;s Build Your{' '}
-          <span className='text-(--color-accent)'>Elevator</span>
-        </h1>
-        <p className='animate-fade-up animation-delay-100 mx-auto mt-6 max-w-2xl text-base leading-relaxed text-(--color-text-muted) sm:text-lg'>
-          Tell us about your lift requirement and our engineers will reach back
-          within one business day with a tailored solution.
-        </p>
-
-        {/* Trust row */}
-        <div className='mt-10 flex flex-wrap justify-center gap-4'>
+      <PageHero
+        eyebrow='Contact us · Open 24 hours'
+        title="Let's build your elevator"
+        accent='elevator'
+        description='Tell us about your lift requirement and our engineers will reach back within one business day with a tailored solution.'
+        image='/images/site/gallery/12.webp'
+        imageAlt='Stainless steel lift landing installed by Nishan Lift Solutions'
+      >
+        <div className='mt-8 flex flex-wrap gap-3'>
           {[
             { Icon: Clock, label: '1-Day Response' },
             { Icon: ShieldCheck, label: 'Free Consultation' },
@@ -327,17 +304,21 @@ export default function ContactPage() {
           ].map(({ Icon, label }) => (
             <div
               key={label}
-              className='glass-panel animate-zoom flex items-center gap-2 rounded-full px-5 py-2.5'
+              className='animate-zoom flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur-md'
             >
-              <Icon size={14} className='text-(--color-accent)' />
+              <Icon size={14} className='text-(--color-highlight)' />
               <span className='text-xs font-semibold'>{label}</span>
             </div>
           ))}
         </div>
-      </section>
+      </PageHero>
 
       {/* Main grid */}
-      <section className='layout grid gap-8 px-4 pb-16 lg:grid-cols-[1fr_1.6fr]'>
+      <section
+        data-floor='1'
+        data-floor-name='Enquiry'
+        className='layout grid gap-8 py-16 lg:grid-cols-[1fr_1.6fr]'
+      >
         {/* Left — company info (second on mobile, first on desktop) */}
         <div className='order-2 space-y-5 lg:order-1'>
           {/* Contact details */}
@@ -351,8 +332,12 @@ export default function ContactPage() {
                 <MapPin size={16} />
               </div>
               <div>
-                <p className='text-xs font-semibold uppercase tracking-wider text-(--color-text-muted)'>Office</p>
-                <p className='mt-0.5 text-sm text-(--color-text-muted)'>{companyInfo.address}</p>
+                <p className='text-xs font-semibold uppercase tracking-wider text-(--color-text-muted)'>
+                  Office
+                </p>
+                <p className='mt-0.5 text-sm text-(--color-text-muted)'>
+                  {companyInfo.address}
+                </p>
               </div>
             </div>
 
@@ -361,9 +346,11 @@ export default function ContactPage() {
                 <Phone size={16} />
               </div>
               <div>
-                <p className='text-xs font-semibold uppercase tracking-wider text-(--color-text-muted)'>Phone</p>
+                <p className='text-xs font-semibold uppercase tracking-wider text-(--color-text-muted)'>
+                  Phone
+                </p>
                 <a
-                  href={`tel:${companyInfo.phone}`}
+                  href={companyInfo.phoneHref}
                   className='mt-0.5 block text-sm font-medium transition hover:text-(--color-accent)'
                 >
                   {companyInfo.phone}
@@ -376,7 +363,9 @@ export default function ContactPage() {
                 <Mail size={16} />
               </div>
               <div>
-                <p className='text-xs font-semibold uppercase tracking-wider text-(--color-text-muted)'>Email</p>
+                <p className='text-xs font-semibold uppercase tracking-wider text-(--color-text-muted)'>
+                  Email
+                </p>
                 <a
                   href={`mailto:${companyInfo.email}`}
                   className='mt-0.5 block break-all text-sm font-medium transition hover:text-(--color-accent)'
@@ -385,6 +374,29 @@ export default function ContactPage() {
                 </a>
               </div>
             </div>
+
+            <div className='flex items-start gap-4'>
+              <div className='flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-(--color-accent)/10 text-(--color-accent)'>
+                <Clock size={16} />
+              </div>
+              <div>
+                <p className='text-xs font-semibold uppercase tracking-wider text-(--color-text-muted)'>
+                  Hours
+                </p>
+                <p className='mt-0.5 text-sm font-medium'>
+                  {companyInfo.hours}
+                </p>
+              </div>
+            </div>
+
+            <a
+              href={companyInfo.whatsappHref}
+              target='_blank'
+              rel='noreferrer'
+              className='flex items-center justify-center gap-2 rounded-full bg-[#25d366] px-5 py-3 text-sm font-bold text-white transition hover:brightness-95'
+            >
+              <MessageCircle size={16} /> Chat on WhatsApp
+            </a>
 
             <a
               href={companyInfo.mapUrl}
@@ -408,17 +420,19 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <h2 className='text-2xl font-extrabold'>Start Your Requirement</h2>
+              <h2 className='text-2xl font-extrabold'>
+                Start Your Requirement
+              </h2>
               <p className='mt-2 text-sm text-(--color-text-muted)'>
                 Answer {TOTAL} quick questions — takes under 2 minutes. Our
                 engineers review every submission personally.
               </p>
             </div>
 
-<button
+            <button
               type='button'
               onClick={openModal}
-              className='group w-full rounded-full bg-(--color-accent) py-4 text-sm font-bold text-white shadow-[0_0_30px_rgba(158,0,0,0.25)] transition-all hover:bg-(--color-accent-strong) hover:shadow-[0_0_50px_rgba(158,0,0,0.4)] hover:-translate-y-0.5 active:scale-95'
+              className='group w-full rounded-full bg-(--color-accent) py-4 text-sm font-bold text-white shadow-[0_0_30px_rgba(196,0,0,0.25)] transition-all hover:bg-(--color-accent-strong) hover:shadow-[0_0_50px_rgba(196,0,0,0.4)] hover:-translate-y-0.5 active:scale-95'
             >
               Open Contact Form
             </button>
@@ -434,12 +448,12 @@ export default function ContactPage() {
       ══════════════════════════════════ */}
       {isOpen && (
         <div
-          className='fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm'
+          className='fixed inset-0 z-[95] flex items-end justify-center bg-black/70 backdrop-blur-sm sm:items-center sm:p-4'
           onClick={(e) => {
             if (e.target === e.currentTarget) closeModal();
           }}
         >
-          <div className='relative w-full max-w-lg overflow-hidden rounded-3xl border border-(--color-border) bg-(--color-surface) shadow-2xl'>
+          <div className='pb-safe animate-fade-up relative max-h-[92svh] w-full max-w-lg overflow-y-auto rounded-t-3xl border border-(--color-border) bg-(--color-surface) shadow-2xl sm:rounded-3xl'>
             {/* ── success ── */}
             {status === 'success' ? (
               <div className='flex flex-col items-center gap-5 px-8 py-14 text-center'>

@@ -98,10 +98,14 @@ export default function PrivacyPolicyPage() {
       <div className='fixed top-0 left-0 w-150 h-150 bg-(--color-accent)/5 blur-[120px] rounded-full pointer-events-none z-[-1]' />
       <div className='fixed bottom-0 right-0 w-150 h-150 bg-(--color-accent)/5 blur-[120px] rounded-full pointer-events-none z-[-1]' />
 
-      <SiteHeader />
+      <SiteHeader solid />
 
       {/* Hero */}
-      <section className='relative layout px-4 pb-12 pt-36 text-center'>
+      <section
+        data-floor='G'
+        data-floor-name='Privacy'
+        className='relative layout px-4 pb-12 pt-36 text-center'
+      >
         <div className='mb-6 flex justify-center'>
           <span className='inline-flex items-center gap-2 rounded-full border border-(--color-border) bg-(--color-surface) px-4 py-2 text-xs font-semibold uppercase tracking-widest text-(--color-accent)'>
             <Scale size={13} />
@@ -109,8 +113,7 @@ export default function PrivacyPolicyPage() {
           </span>
         </div>
         <h1 className='animate-fade-up text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl'>
-          Privacy{' '}
-          <span className='text-(--color-accent)'>Policy</span>
+          Privacy <span className='text-(--color-accent)'>Policy</span>
         </h1>
         <p className='animate-fade-up animation-delay-100 mx-auto mt-6 max-w-2xl text-base leading-relaxed text-(--color-text-muted) sm:text-lg'>
           {companyInfo.name} values your privacy. This policy explains how we

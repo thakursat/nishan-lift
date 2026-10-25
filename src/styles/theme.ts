@@ -8,6 +8,9 @@ export interface ElevatorTheme {
     accentStrong: string;
     border: string;
     highlight: string;
+    ink: string;
+    inkSoft: string;
+    steel: string;
   };
   gradients: {
     hero: string;
@@ -17,18 +20,21 @@ export interface ElevatorTheme {
 
 export const elevatorTheme: ElevatorTheme = {
   colors: {
-    background: '#f7f5f1',
+    background: '#f4f2ee',
     surface: '#ffffff',
-    textPrimary: '#0e0e13',
-    textMuted: '#6b6b75',
-    accent: '#9E0000',
-    accentStrong: '#c40000',
-    border: '#e4ded7',
-    highlight: '#ff6a6a',
+    textPrimary: '#0d0d12',
+    textMuted: '#5f5f6b',
+    accent: '#c40000',
+    accentStrong: '#e01414',
+    border: '#e2ded8',
+    highlight: '#ff4d4d',
+    ink: '#0b0b0f',
+    inkSoft: '#16161d',
+    steel: '#a7adb4',
   },
   gradients: {
-    hero: 'linear-gradient(180deg, rgba(158, 0, 0, 0.25), rgba(255, 255, 255, 0.95))',
+    hero: 'linear-gradient(180deg, rgba(11, 11, 15, 0.2), rgba(11, 11, 15, 0.92))',
     accent:
-      'linear-gradient(135deg, rgba(158, 0, 0, 0.95), rgba(196, 0, 0, 0.8), rgba(255, 77, 77, 0.6))',
+      'linear-gradient(135deg, rgba(196, 0, 0, 0.95), rgba(224, 20, 20, 0.85), rgba(255, 77, 77, 0.6))',
   },
 };

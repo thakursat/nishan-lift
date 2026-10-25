@@ -1,7 +1,7 @@
 export const siteConfig = {
   title: 'Nishan Lift Solutions',
   description:
-    'Nishan Lift Solutions provides premium elevator installation, modernization, and maintenance services in Jaipur for residential, commercial, and industrial properties.',
+    'Nishan Lift Solutions is a Jaipur lift and elevator company for installation, modernization, AMC and 24×7 emergency lift repair across Jaipur, Ajmer, Sikar and Jhunjhunu. Rated 4.8 on Google.',
   keywords: [
     'Nishan Lift Solutions',
     'elevator service Jaipur',
@@ -11,6 +11,21 @@ export const siteConfig = {
     'commercial elevator solutions',
     'residential lift service',
     'elevator AMC Jaipur',
+    'lift repair near me',
+    '24x7 lift repair Jaipur',
+    'elevator company Jaipur',
+    'home lift Jaipur',
+    'hospital elevator Jaipur',
+    'goods lift Jaipur',
+    'MRL elevator Jaipur',
+    'capsule lift Jaipur',
+    'hydraulic lift Jaipur',
+    'lift modernization Jaipur',
+    'lift safety audit Jaipur',
+    'SS golden lift cabin',
+    'lift service Ajmer',
+    'lift service Sikar',
+    'lift service Jhunjhunu',
   ],
   /** Without additional '/' on the end */
   url:
@@ -18,5 +33,5 @@ export const siteConfig = {
     'https://nishan-lift-solutions.vercel.app',
   ogImage: '/images/og.jpg',
   locale: 'en_IN',
-  themeColor: '#9E0000',
+  themeColor: '#0b0b0f',
 };

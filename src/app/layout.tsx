@@ -1,25 +1,34 @@
 import { Metadata, Viewport } from 'next';
+import { Big_Shoulders } from 'next/font/google';
 import * as React from 'react';
 
 import '@/styles/globals.css';
-import { elevatorTheme } from '@/styles/theme';
+
+import { siteGraph } from '@/lib/structured-data';
+
+import JsonLd from '@/components/site/JsonLd';
+import LiftIntro from '@/components/site/LiftIntro';
+import MobileActionBar from '@/components/site/MobileActionBar';
 
 import { siteConfig } from '@/constant/config';
-import { companyInfo } from '@/constant/nishan-content';
-import AppLoader from '@/components/site/AppLoader';
+import { elevatorTheme } from '@/styles/theme';
 
 // !STARTERCONF Change these default meta
 // !STARTERCONF Look at @/constant/config to change them
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.title,
+    default: `${siteConfig.title} | Lift & Elevator Company in Jaipur`,
     template: `%s | ${siteConfig.title}`,
   },
   applicationName: siteConfig.title,
   description: siteConfig.description,
   keywords: siteConfig.keywords,
   category: 'business',
+  other: {
+    'geo.region': 'IN-RJ',
+    'geo.placename': 'Jaipur',
+  },
   alternates: {
     canonical: '/',
   },
@@ -81,6 +90,13 @@ export const viewport: Viewport = {
   themeColor: siteConfig.themeColor,
 };
 
+const displayFont = Big_Shoulders({
+  subsets: ['latin'],
+  weight: ['500', '700', '800', '900'],
+  variable: '--font-display',
+  display: 'swap',
+});
+
 const themeVariables: React.CSSProperties & Record<string, string> = {
   '--color-bg': elevatorTheme.colors.background,
   '--color-surface': elevatorTheme.colors.surface,
@@ -90,6 +106,9 @@ const themeVariables: React.CSSProperties & Record<string, string> = {
   '--color-accent-strong': elevatorTheme.colors.accentStrong,
   '--color-border': elevatorTheme.colors.border,
   '--color-highlight': elevatorTheme.colors.highlight,
+  '--color-ink': elevatorTheme.colors.ink,
+  '--color-ink-soft': elevatorTheme.colors.inkSoft,
+  '--color-steel': elevatorTheme.colors.steel,
 };
 
 export default function RootLayout({
@@ -97,56 +116,20 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const localBusinessSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    name: companyInfo.name,
-    image: `${siteConfig.url}/images/logo.png`,
-    url: siteConfig.url,
-    telephone: companyInfo.phone,
-    email: companyInfo.email,
-    description: siteConfig.description,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: companyInfo.shortAddress,
-      addressLocality: 'Jaipur',
-      addressRegion: 'Rajasthan',
-      postalCode: '302021',
-      addressCountry: 'IN',
-    },
-    areaServed: 'Jaipur',
-    sameAs: ['https://www.linkedin.com/in/satyam-singh/'],
-  };
-
-  const websiteSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: siteConfig.title,
-    url: siteConfig.url,
-    description: siteConfig.description,
-    inLanguage: siteConfig.locale,
-  };
-
   return (
-    <html lang='en'>
+    <html
+      lang='en'
+      className={displayFont.variable}
+      data-scroll-behavior='smooth'
+    >
       <body
         style={themeVariables}
         className='min-h-screen bg-[color:var(--color-bg)] text-[color:var(--color-text-primary)]'
       >
-        <AppLoader />
-        <script
-          type='application/ld+json'
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessSchema),
-          }}
-        />
-        <script
-          type='application/ld+json'
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(websiteSchema),
-          }}
-        />
+        <LiftIntro />
+        <JsonLd data={siteGraph()} />
         {children}
+        <MobileActionBar />
       </body>
     </html>
   );
