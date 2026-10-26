@@ -1,60 +1,83 @@
-import { ArrowUpRight, Star } from 'lucide-react';
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Clock,
+  HardHat,
+  ShieldCheck,
+} from 'lucide-react';
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { faqGraph } from '@/lib/structured-data';
 
 import BeforeAfter from '@/components/site/BeforeAfter';
-import Engineering from '@/components/site/Engineering';
+import EmergencyGuide from '@/components/site/EmergencyGuide';
 import FaqList from '@/components/site/FaqList';
-import GalleryImageViewer from '@/components/site/GalleryImageViewer';
 import HallCallCta from '@/components/site/HallCallCta';
 import Hero from '@/components/site/Hero';
-import InstaReelsCarousel from '@/components/site/InstaReelsCarousel';
 import JsonLd from '@/components/site/JsonLd';
-import Marquee from '@/components/site/Marquee';
 import ProductRail from '@/components/site/ProductRail';
-import { Reveal } from '@/components/site/Reveal';
-import ReviewsWall from '@/components/site/ReviewsWall';
+import { DoorImage, Reveal } from '@/components/site/Reveal';
+import ReviewsGrid from '@/components/site/ReviewsGrid';
+import SafetyAudit from '@/components/site/SafetyAudit';
+import SafetySystems from '@/components/site/SafetySystems';
 import SectionHeading from '@/components/site/SectionHeading';
-import ServiceStack from '@/components/site/ServiceStack';
 import SiteFooter from '@/components/site/SiteFooter';
 import SiteHeader from '@/components/site/SiteHeader';
 
 import {
-  appreciationLetters,
   companyInfo,
   elevatorTypes,
   faqs,
   featuredServices,
-  galleryImages,
-  highlights,
-  instaReels,
   products,
   rating,
   reviews,
+  safetyPillars,
   services,
 } from '@/constant/nishan-content';
 
 export const metadata: Metadata = {
   title: {
     absolute:
-      'Nishan Lift Solutions | Lift Installation, AMC & Modernization in Jaipur',
+      'Nishan Lift Solutions | Safe Lift Installation, AMC & 24×7 Repair in Jaipur',
   },
   description:
-    'Nishan Lift Solutions — premium lift installation, modernization, AMC and 24×7 emergency repair across Jaipur, Ajmer, Sikar and Jhunjhunu. Rated 4.8 on Google.',
+    'Nishan Lift Solutions — safe lift installation, modernization, AMC, free safety audits and 24×7 emergency lift repair across Jaipur, Ajmer, Sikar and Jhunjhunu. Rated 4.8 on Google.',
   alternates: { canonical: '/' },
   openGraph: {
     url: '/',
-    title: 'Nishan Lift Solutions | Lift & Elevator Company in Jaipur',
+    title: 'Nishan Lift Solutions | Safe, reliable lifts in Jaipur',
     description:
-      'Lift installation, modernization, AMC and 24×7 emergency repair across Jaipur, Ajmer, Sikar and Jhunjhunu.',
+      'Lift installation, modernization, AMC, free safety audits and 24×7 emergency repair across Jaipur, Ajmer, Sikar and Jhunjhunu.',
     images: [{ url: '/images/og.jpg', width: 1200, height: 630 }],
     type: 'website',
     locale: 'en_IN',
   },
 };
+
+const pillarIcons = [ShieldCheck, HardHat, Clock];
+
+const work = [
+  {
+    src: '/images/site/pro/cabin-signature.webp',
+    alt: 'Nishan Lift signature SS cabin with patterned panels',
+  },
+  {
+    src: '/images/site/pro/landing-granite.webp',
+    alt: 'Stainless steel landing door set in black granite',
+  },
+  {
+    src: '/images/site/pro/landing-wood.webp',
+    alt: 'Brushed steel landing door with wood-finish surround',
+  },
+  {
+    src: '/images/site/pro/cabin-ceiling.webp',
+    alt: 'Lift cabin with decorative laser-cut ceiling',
+  },
+];
+
+const featuredReviews = ['Ashish Sharma', 'Harsh Bhandari', 'Neha Sharma'];
 
 export default function HomePage() {
   return (
@@ -62,235 +85,241 @@ export default function HomePage() {
       <SiteHeader />
       <Hero />
 
-      {/* What we do */}
+      {/* Safety pillars */}
       <section
         data-floor='1'
-        data-floor-name='Services'
-        className='relative py-20 sm:py-28'
+        data-floor-name='Our promise'
+        className='py-24 sm:py-36'
       >
-        <Marquee
-          items={services}
-          className='font-display mb-16 -rotate-2 bg-(--color-accent) py-4 text-2xl font-extrabold uppercase text-white shadow-xl sm:text-3xl'
-        />
         <div className='layout'>
           <SectionHeading
-            floor='1'
-            eyebrow='What we do'
-            title='Services from the best lift service in Jaipur'
-            accent='Jaipur'
-            description={`${companyInfo.description}`}
+            eyebrow='Safety first'
+            title='Safety is engineered in, not added on.'
+            accent='Safety'
+            description={companyInfo.commitment}
           />
-          <div className='mt-12'>
-            <ServiceStack services={featuredServices} />
+          <ul className='mt-16 grid gap-12 sm:grid-cols-3 sm:gap-10'>
+            {safetyPillars.map((pillar, index) => {
+              const Icon = pillarIcons[index];
+              return (
+                <Reveal key={pillar.title} as='li' delay={index * 0.1}>
+                  <span className='flex h-12 w-12 items-center justify-center rounded-full bg-(--color-accent)/10 text-(--color-accent)'>
+                    <Icon className='h-5 w-5' />
+                  </span>
+                  <h3 className='mt-6 text-xl font-semibold'>{pillar.title}</h3>
+                  <p className='mt-3 leading-relaxed text-(--color-text-muted)'>
+                    {pillar.description}
+                  </p>
+                </Reveal>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+
+      <SafetyAudit floor='2' />
+      <SafetySystems floor='3' />
+
+      {/* Services */}
+      <section
+        data-floor='4'
+        data-floor-name='Services'
+        className='py-24 sm:py-36'
+      >
+        <div className='layout'>
+          <div className='flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between'>
+            <SectionHeading
+              eyebrow='What we do'
+              title='From the first drawing to every service visit after.'
+              accent='every'
+            />
+            <Reveal>
+              <Link
+                href='/products-services'
+                className='group inline-flex items-center gap-2 text-sm font-semibold'
+              >
+                All services
+                <ArrowRight className='h-4 w-4 transition group-hover:translate-x-0.5' />
+              </Link>
+            </Reveal>
           </div>
 
-          <div className='mt-16'>
-            <Reveal>
-              <p className='text-xs font-bold uppercase tracking-[0.35em] text-(--color-text-muted)'>
-                Elevators we build
-              </p>
+          <ul className='mt-16 grid gap-14 md:grid-cols-3 md:gap-8'>
+            {featuredServices.map((service, index) => (
+              <Reveal key={service.title} as='li' delay={index * 0.1}>
+                <DoorImage
+                  src={service.image}
+                  alt={service.title}
+                  className='aspect-[4/3] rounded-2xl'
+                  sizes='(max-width: 768px) 100vw, 33vw'
+                />
+                <h3 className='mt-6 text-xl font-semibold'>{service.title}</h3>
+                <p className='mt-3 text-sm leading-relaxed text-(--color-text-muted)'>
+                  {service.description}
+                </p>
+              </Reveal>
+            ))}
+          </ul>
+
+          <Reveal className='mt-20 grid gap-10 border-t border-(--color-border) pt-10 sm:grid-cols-2'>
+            <div>
+              <p className='text-sm font-semibold'>Also available</p>
+              <ul className='mt-4 grid grid-cols-1 gap-x-6 gap-y-2 text-sm text-(--color-text-muted) min-[420px]:grid-cols-2'>
+                {services.map((service) => (
+                  <li key={service}>{service}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className='text-sm font-semibold'>Lifts we build</p>
+              <ul className='mt-4 grid grid-cols-1 gap-x-6 gap-y-2 text-sm text-(--color-text-muted) min-[420px]:grid-cols-2'>
+                {elevatorTypes.map((type) => (
+                  <li key={type}>{type}</li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Work */}
+      <section
+        data-floor='5'
+        data-floor-name='Our work'
+        className='bg-(--color-surface) py-24 sm:py-36'
+      >
+        <div className='layout'>
+          <SectionHeading
+            eyebrow='Our work'
+            title='Finished to last, in steel, glass and stone.'
+            accent='last,'
+            description='A few recent installations from our projects across Rajasthan.'
+          />
+          <ul className='mt-16 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4'>
+            {work.map((item, index) => (
+              <Reveal
+                key={item.src}
+                as='li'
+                delay={index * 0.08}
+                className={index % 2 === 1 ? 'lg:mt-16' : undefined}
+              >
+                <DoorImage
+                  src={item.src}
+                  alt={item.alt}
+                  className='aspect-[3/4] rounded-2xl'
+                  sizes='(max-width: 1024px) 50vw, 25vw'
+                />
+              </Reveal>
+            ))}
+          </ul>
+
+          <div className='mt-28 grid gap-14 lg:grid-cols-2 lg:items-center lg:gap-20'>
+            <div>
+              <SectionHeading
+                eyebrow='Modernization'
+                title='An old cage lift, made safe again.'
+                accent='safe'
+                description='Drag the handle to compare. A collapsible gate and open cage were replaced with an automatic stainless steel door and a digital car operating panel.'
+              />
+              <Reveal delay={0.2}>
+                <Link
+                  href='/contact'
+                  className='group mt-10 inline-flex items-center gap-2 text-sm font-semibold'
+                >
+                  Ask about modernizing your lift
+                  <ArrowRight className='h-4 w-4 transition group-hover:translate-x-0.5' />
+                </Link>
+              </Reveal>
+            </div>
+            <Reveal className='mx-auto w-full max-w-md lg:max-w-none'>
+              <BeforeAfter
+                before='/images/site/before.webp'
+                after='/images/site/after.webp'
+                alt='lift modernization in Jaipur'
+              />
             </Reveal>
-            <ul className='mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4'>
-              {elevatorTypes.map((type, index) => (
-                <Reveal key={type} as='li' delay={(index % 4) * 0.06}>
-                  <div className='group flex h-full items-center gap-3 rounded-2xl border border-(--color-border) bg-(--color-surface) p-3 transition hover:-translate-y-1 hover:border-(--color-accent)/40 hover:shadow-lg'>
-                    <span className='steel font-display flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-extrabold text-black/70 shadow-[inset_0_2px_3px_rgba(255,255,255,0.7),0_3px_8px_rgba(0,0,0,0.2)]'>
-                      <span className='flex h-8 w-8 items-center justify-center rounded-full ring-2 ring-black/10 transition group-hover:ring-[#ff3b3b] group-hover:shadow-[0_0_14px_rgba(255,40,40,0.8)]'>
-                        {index + 1}
-                      </span>
-                    </span>
-                    <span className='text-sm leading-tight font-semibold'>
-                      {type}
-                    </span>
-                  </div>
-                </Reveal>
-              ))}
-            </ul>
           </div>
         </div>
       </section>
 
       {/* Products */}
       <section
-        data-floor='2'
+        data-floor='6'
         data-floor-name='Products'
-        className='relative bg-(--color-surface) py-20 sm:py-28'
+        className='py-24 sm:py-36'
       >
         <div className='layout'>
-          <div className='flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between'>
+          <div className='flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between'>
             <SectionHeading
-              floor='2'
               eyebrow='Cabins & doors'
-              title='Products crafted in steel & glass'
-              accent='steel'
-              description='Golden, mirror and brushed finishes for cabins and landing doors — swipe through the range.'
+              title='Finishes for every building.'
+              accent='every'
             />
-            <Link
-              href='/products-services?tab=products'
-              className='group flex shrink-0 items-center gap-2 text-sm font-bold text-(--color-accent)'
-            >
-              View all products
-              <ArrowUpRight className='h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5' />
-            </Link>
+            <Reveal>
+              <Link
+                href='/products-services?tab=products'
+                className='group inline-flex items-center gap-2 text-sm font-semibold'
+              >
+                View all products
+                <ArrowUpRight className='h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5' />
+              </Link>
+            </Reveal>
           </div>
-          <div className='mt-10'>
-            <ProductRail products={products} />
+          <div className='mt-16'>
+            <ProductRail products={products.slice(0, 4)} />
           </div>
         </div>
       </section>
-
-      {/* Modernization */}
-      <section
-        data-floor='3'
-        data-floor-name='Modernization'
-        className='relative py-20 sm:py-28'
-      >
-        <div className='layout grid gap-12 lg:grid-cols-2 lg:items-center'>
-          <div>
-            <SectionHeading
-              floor='3'
-              eyebrow='Before → after'
-              title='Old lift. New life.'
-              accent='New'
-              description='Drag the handle to see a real Nishan Lift modernization — collapsible gate and open cage replaced with an automatic stainless car door and digital COP.'
-            />
-            <ul className='mt-8 grid gap-2.5'>
-              {highlights.map((highlight, index) => (
-                <Reveal key={highlight} as='li' delay={index * 0.06}>
-                  <span className='flex items-center gap-3 text-sm font-semibold'>
-                    <span className='flex h-6 w-6 items-center justify-center rounded-full bg-(--color-accent) text-[10px] text-white'>
-                      ▲
-                    </span>
-                    {highlight}
-                  </span>
-                </Reveal>
-              ))}
-            </ul>
-            <div className='mt-10 grid max-w-md grid-cols-2 gap-3'>
-              {appreciationLetters.map((letter, index) => (
-                <Reveal key={letter.from} delay={index * 0.1}>
-                  <figure className='group relative overflow-hidden rounded-2xl border border-(--color-border) bg-(--color-surface) p-2'>
-                    <div className='relative aspect-[3/4] overflow-hidden rounded-xl'>
-                      <Image
-                        src={letter.image}
-                        alt={`Letter of appreciation from ${letter.from}`}
-                        fill
-                        sizes='(max-width: 1024px) 45vw, 22vw'
-                        className='object-cover object-top transition duration-700 group-hover:scale-105'
-                      />
-                    </div>
-                    <figcaption className='px-1 pt-2 text-xs font-semibold'>
-                      Appreciation · {letter.from}
-                    </figcaption>
-                  </figure>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-          <Reveal
-            from='right'
-            className='mx-auto w-full max-w-md lg:max-w-none'
-          >
-            <BeforeAfter
-              before='/images/site/before.webp'
-              after='/images/site/after.webp'
-              alt='lift modernization in Jaipur'
-            />
-          </Reveal>
-        </div>
-      </section>
-
-      <Engineering />
 
       {/* Reviews */}
       <section
-        data-floor='5'
+        data-floor='7'
         data-floor-name='Reviews'
-        className='relative overflow-hidden py-20 sm:py-28'
+        className='bg-(--color-surface) py-24 sm:py-36'
       >
         <div className='layout'>
-          <div className='flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between'>
+          <div className='flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between'>
             <SectionHeading
-              floor='5'
               eyebrow='Google reviews'
-              title='Rated 4.8 by the buildings we serve'
-              accent='4.8'
+              title={`Rated ${rating.score} by the buildings we serve.`}
+              accent={String(rating.score)}
             />
-            <Reveal from='right'>
+            <Reveal>
               <a
                 href={companyInfo.reviewsUrl}
                 target='_blank'
                 rel='noreferrer'
-                className='flex items-center gap-4 rounded-3xl bg-(--color-ink) p-4 pr-6 text-white transition hover:-translate-y-1'
+                className='group inline-flex items-center gap-2 text-sm font-semibold'
               >
-                <span className='rounded-2xl bg-black px-4 py-2 ring-1 ring-white/10'>
-                  <span className='led text-4xl'>{rating.score}</span>
-                </span>
-                <span>
-                  <span className='flex gap-0.5'>
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <Star
-                        key={index}
-                        className='h-4 w-4 fill-amber-400 text-amber-400'
-                      />
-                    ))}
-                  </span>
-                  <span className='mt-1 block text-xs text-white/60'>
-                    {rating.count}+ reviews · Read all on Google
-                  </span>
-                </span>
+                Read all {rating.count}+ reviews
+                <ArrowUpRight className='h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5' />
               </a>
             </Reveal>
           </div>
-          <div className='mt-12'>
-            <ReviewsWall reviews={reviews} />
+          <div className='mt-16'>
+            <ReviewsGrid
+              reviews={reviews.filter((review) =>
+                featuredReviews.includes(review.name),
+              )}
+            />
           </div>
         </div>
       </section>
 
-      {/* Gallery */}
-      <section
-        data-floor='6'
-        data-floor-name='Gallery'
-        className='relative bg-(--color-surface) py-20 sm:py-28'
-      >
-        <div className='layout'>
-          <SectionHeading
-            floor='6'
-            eyebrow='Our photo gallery'
-            title='Installed, finished, handed over'
-            accent='finished,'
-            description='Real cabins, landings and machine rooms from our projects across Rajasthan.'
-          />
-          <div className='mt-10'>
-            <GalleryImageViewer images={galleryImages} initialCount={12} />
-          </div>
-          <div className='mt-20'>
-            <Reveal>
-              <p className='text-xs font-bold uppercase tracking-[0.35em] text-(--color-text-muted)'>
-                On Instagram · @{companyInfo.instagram}
-              </p>
-            </Reveal>
-            <div className='mt-5'>
-              <InstaReelsCarousel items={instaReels} />
-            </div>
-          </div>
-        </div>
-      </section>
+      <EmergencyGuide floor='8' />
 
       {/* FAQ */}
       <section
-        data-floor='7'
+        data-floor='9'
         data-floor-name='FAQ'
-        className='relative py-20 sm:py-28'
+        className='bg-(--color-surface) py-24 sm:py-36'
       >
         <JsonLd data={faqGraph()} />
-        <div className='layout grid gap-10 lg:grid-cols-[0.8fr_1.2fr]'>
+        <div className='layout grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20'>
           <SectionHeading
-            floor='7'
             eyebrow='Questions, answered'
-            title='Lift questions we hear every day'
-            accent='every'
+            title='What building owners ask us.'
+            accent='ask'
             description={`Still unsure? Call ${companyInfo.phone} — someone picks up 24 hours a day.`}
           />
           <Reveal>
@@ -299,7 +328,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <HallCallCta floor='8' />
+      <HallCallCta floor='10' />
       <SiteFooter />
     </main>
   );

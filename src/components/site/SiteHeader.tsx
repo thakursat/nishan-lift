@@ -83,17 +83,17 @@ export default function SiteHeader({ solid = false }: SiteHeaderProps) {
               />
             </span>
             <span className='hidden leading-none text-white min-[380px]:block'>
-              <span className='font-display block text-lg font-extrabold uppercase tracking-wide'>
+              <span className='block text-base font-semibold tracking-tight'>
                 Nishan Lift
               </span>
-              <span className='block text-[9px] font-semibold whitespace-nowrap uppercase tracking-[0.2em] text-white/60 sm:text-[10px] sm:tracking-[0.3em]'>
+              <span className='block text-[11px] whitespace-nowrap text-white/60'>
                 Solutions · Jaipur
               </span>
             </span>
           </Link>
 
           <nav className='hidden items-center gap-1 lg:flex'>
-            {quickLinks.slice(0, 4).map((link, index) => {
+            {quickLinks.slice(0, 5).map((link, index) => {
               const active = pathname === link.href;
               return (
                 <Link

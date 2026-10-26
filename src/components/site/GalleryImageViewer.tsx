@@ -54,14 +54,14 @@ export default function GalleryImageViewer({
 
   return (
     <>
-      <div className='columns-2 gap-3 sm:columns-3 lg:columns-4'>
+      <div className='columns-2 gap-4 sm:columns-3 sm:gap-6'>
         {visible.map((image, index) => (
           <motion.button
             key={image}
             type='button'
             onClick={() => setActiveIndex(index)}
             aria-label={`Open gallery image ${index + 1}`}
-            className='group relative mb-3 block w-full overflow-hidden rounded-2xl bg-black/5 break-inside-avoid'
+            className='group relative mb-4 block w-full overflow-hidden rounded-2xl bg-black/5 break-inside-avoid sm:mb-6'
             initial={{ opacity: 0, y: 40, clipPath: 'inset(100% 0 0 0)' }}
             whileInView={{ opacity: 1, y: 0, clipPath: 'inset(0% 0 0 0)' }}
             viewport={{ once: true, margin: '0px 0px -8% 0px' }}
@@ -79,10 +79,7 @@ export default function GalleryImageViewer({
               sizes='(max-width: 640px) 48vw, (max-width: 1024px) 32vw, 24vw'
               className='h-auto w-full object-cover transition duration-700 group-hover:scale-105'
             />
-            <span className='absolute inset-0 flex items-end justify-between bg-linear-to-t from-black/60 via-transparent p-3 opacity-0 transition group-hover:opacity-100'>
-              <span className='led text-sm'>
-                {String(index + 1).padStart(2, '0')}
-              </span>
+            <span className='absolute inset-0 flex items-end justify-end bg-linear-to-t from-black/50 via-transparent p-3 opacity-0 transition group-hover:opacity-100'>
               <Expand className='h-4 w-4 text-white' />
             </span>
           </motion.button>

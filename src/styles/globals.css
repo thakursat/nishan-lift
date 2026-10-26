@@ -172,6 +172,8 @@
   html {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
+    /* clip, not hidden: stops sideways scroll on phones without breaking sticky */
+    overflow-x: clip;
   }
 
   body {
@@ -180,7 +182,8 @@
     color: var(--color-text-primary);
     font-family: var(--font-primary);
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1,
@@ -189,7 +192,12 @@
   h4,
   .heading {
     font-family: var(--font-primary);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   ::selection {

@@ -22,43 +22,38 @@ export default function MobileActionBar() {
   if (pathname === '/contact') return null;
 
   return (
-    <motion.div
-      className='pb-safe fixed inset-x-0 bottom-0 z-40 px-3 pt-2 md:hidden'
+    <motion.nav
+      aria-label='Quick contact'
+      className='pb-safe fixed right-0 bottom-0 left-0 z-40 border-t border-(--color-border) bg-(--color-surface)/95 backdrop-blur-lg md:hidden'
       initial={false}
-      animate={{ y: visible ? 0 : '120%' }}
-      transition={{ type: 'spring', stiffness: 260, damping: 28 }}
+      animate={{ y: visible ? 0 : '100%' }}
+      transition={{ type: 'spring', stiffness: 260, damping: 30 }}
     >
-      <div className='steel-dark grid grid-cols-3 gap-2 rounded-3xl p-2 shadow-[0_-10px_40px_rgba(0,0,0,0.35)] ring-1 ring-white/10'>
+      <div className='grid grid-cols-3 gap-2 px-3 pt-2'>
         <a
           href={companyInfo.phoneHref}
-          className='flex flex-col items-center gap-1 rounded-2xl py-2 text-[11px] font-semibold text-white/80 active:bg-white/5'
+          className='flex items-center justify-center gap-2 rounded-xl bg-(--color-accent) py-3 text-sm font-semibold text-white'
         >
-          <span className='pulse-ring flex h-10 w-10 items-center justify-center rounded-full bg-(--color-accent) text-white'>
-            <Phone className='h-4 w-4' />
-          </span>
-          Call 24×7
+          <Phone className='h-4 w-4' />
+          Call
         </a>
         <a
           href={companyInfo.whatsappHref}
           target='_blank'
           rel='noreferrer'
-          className='flex flex-col items-center gap-1 rounded-2xl py-2 text-[11px] font-semibold text-white/80 active:bg-white/5'
+          className='flex items-center justify-center gap-2 rounded-xl border border-(--color-border) py-3 text-sm font-semibold'
         >
-          <span className='flex h-10 w-10 items-center justify-center rounded-full bg-[#25d366] text-white'>
-            <MessageCircle className='h-4 w-4' />
-          </span>
+          <MessageCircle className='h-4 w-4 text-[#25d366]' />
           WhatsApp
         </a>
         <Link
           href='/contact'
-          className='flex flex-col items-center gap-1 rounded-2xl py-2 text-[11px] font-semibold text-white/80 active:bg-white/5'
+          className='flex items-center justify-center gap-2 rounded-xl bg-(--color-ink) py-3 text-sm font-semibold text-white'
         >
-          <span className='steel flex h-10 w-10 items-center justify-center rounded-full text-black/75'>
-            <Send className='h-4 w-4' />
-          </span>
+          <Send className='h-4 w-4' />
           Enquire
         </Link>
       </div>
-    </motion.div>
+    </motion.nav>
   );
 }

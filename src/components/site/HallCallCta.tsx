@@ -30,22 +30,21 @@ export default function HallCallCta({ floor = '7' }: { floor?: string }) {
     <section
       data-floor={floor}
       data-floor-name='Get started'
-      className='relative overflow-hidden bg-(--color-bg) py-20 sm:py-28'
+      className='relative bg-(--color-bg) py-24 sm:py-36'
     >
       <div className='layout'>
-        <div className='steel-dark grain relative overflow-hidden rounded-[2.5rem] px-6 py-14 text-white ring-1 ring-white/10 sm:px-14'>
-          <div className='blueprint absolute inset-0 opacity-50' />
+        <div className='relative overflow-hidden rounded-3xl bg-(--color-ink) px-6 py-16 text-white sm:px-16 sm:py-20'>
           <div className='relative grid items-center gap-12 md:grid-cols-[1fr_auto]'>
             <div>
               <Reveal>
-                <p className='text-xs font-bold uppercase tracking-[0.35em] text-white/50'>
+                <p className='text-xs font-semibold uppercase tracking-[0.2em] text-white/50'>
                   Lift service · Jaipur
                 </p>
               </Reveal>
               <SplitHeading
                 text='Your next step starts here.'
                 accent='next'
-                className='font-display mt-4 text-5xl leading-[0.92] font-extrabold uppercase sm:text-7xl'
+                className='mt-5 text-4xl leading-[1.05] font-semibold sm:text-6xl'
               />
               <Reveal delay={0.2}>
                 <p className='mt-5 max-w-md text-white/65'>

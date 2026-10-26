@@ -3,7 +3,6 @@ import { cn } from '@/lib/utils';
 import { Reveal, SplitHeading } from '@/components/site/Reveal';
 
 type SectionHeadingProps = {
-  floor: string;
   eyebrow: string;
   title: string;
   accent?: string;
@@ -14,7 +13,6 @@ type SectionHeadingProps = {
 };
 
 export default function SectionHeading({
-  floor,
   eyebrow,
   title,
   accent,
@@ -28,42 +26,36 @@ export default function SectionHeading({
   return (
     <div
       className={cn(
-        'max-w-3xl',
+        'max-w-2xl',
         align === 'center' && 'mx-auto text-center',
         className,
       )}
     >
-      <Reveal
-        className={cn(
-          'flex items-center gap-3',
-          align === 'center' && 'justify-center',
-        )}
-      >
-        <span className='font-display flex h-7 min-w-7 items-center justify-center rounded-md bg-black px-1.5 text-sm'>
-          <span className='led'>{floor}</span>
-        </span>
-        <span
+      <Reveal>
+        <p
           className={cn(
-            'text-xs font-bold uppercase tracking-[0.35em]',
+            'flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em]',
+            align === 'center' && 'justify-center',
             dark ? 'text-white/60' : 'text-(--color-accent)',
           )}
         >
+          <span className='h-px w-8 bg-current' />
           {eyebrow}
-        </span>
+        </p>
       </Reveal>
       <SplitHeading
         text={title}
         accent={accent}
         className={cn(
-          'font-display mt-4 text-4xl leading-[0.95] font-extrabold uppercase sm:text-5xl lg:text-6xl',
+          'mt-5 text-3xl leading-[1.1] font-semibold sm:text-5xl',
           dark ? 'text-white' : 'text-(--color-text-primary)',
         )}
       />
       {description && (
-        <Reveal delay={0.2}>
+        <Reveal delay={0.15}>
           <p
             className={cn(
-              'mt-4 text-base leading-relaxed sm:text-lg',
+              'mt-5 text-base leading-relaxed sm:text-lg',
               dark ? 'text-white/65' : 'text-(--color-text-muted)',
             )}
           >

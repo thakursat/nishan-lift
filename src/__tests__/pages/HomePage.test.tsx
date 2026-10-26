@@ -12,7 +12,7 @@ describe('Homepage', () => {
     render(<HomePage />);
 
     expect(
-      screen.getByRole('heading', { level: 1, name: /Premium lifts/i }),
+      screen.getByRole('heading', { level: 1, name: /Safe, reliable lifts/i }),
     ).toBeInTheDocument();
   });
 
@@ -22,7 +22,19 @@ describe('Homepage', () => {
       container.querySelectorAll<HTMLElement>('[data-floor]'),
     ).map((section) => section.dataset.floor);
 
-    expect(floors).toEqual(['G', '1', '2', '3', '4', '5', '6', '7', '8']);
+    expect(floors).toEqual([
+      'G',
+      '1',
+      '2',
+      '3',
+      '4',
+      '5',
+      '6',
+      '7',
+      '8',
+      '9',
+      '10',
+    ]);
   });
 
   it('shows the live business phone number and real reviews', () => {

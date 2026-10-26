@@ -27,10 +27,10 @@ export default function FaqList({ faqs }: { faqs: Faq[] }) {
               >
                 <span
                   className={cn(
-                    'font-display flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-extrabold transition',
+                    'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-sm font-semibold transition',
                     expanded
-                      ? 'bg-(--color-accent) text-white shadow-[0_0_16px_rgba(196,0,0,0.5)]'
-                      : 'steel text-black/70',
+                      ? 'border-(--color-accent) bg-(--color-accent) text-white'
+                      : 'border-(--color-border) text-(--color-text-muted)',
                   )}
                 >
                   {index + 1}

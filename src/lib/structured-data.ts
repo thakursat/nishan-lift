@@ -2,12 +2,16 @@ import { siteConfig } from '@/constant/config';
 import {
   companyInfo,
   elevatorTypes,
+  emergencySteps,
   faqs,
   featuredServices,
   products,
   rating,
   reviews,
+  safetyAudit,
+  safetySystems,
   services,
+  warningSigns,
 } from '@/constant/nishan-content';
 
 const BUSINESS_ID = `${siteConfig.url}/#business`;
@@ -30,8 +34,8 @@ export function siteGraph() {
         url: siteConfig.url,
         logo: absolute('/images/site/logo-full.webp'),
         image: [
-          absolute('/images/site/hero-cabin.webp'),
-          absolute('/images/site/shopfront.webp'),
+          absolute('/images/site/pro/cabin-signature.webp'),
+          absolute('/images/site/pro/shopfront.webp'),
           absolute('/images/og.jpg'),
         ],
         telephone: companyInfo.phone,
@@ -139,11 +143,11 @@ export function catalog() {
   };
 }
 
-export function faqGraph() {
+export function faqGraph(items = faqs) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqs.map((faq) => ({
+    mainEntity: items.map((faq) => ({
       '@type': 'Question',
       name: faq.question,
       acceptedAnswer: { '@type': 'Answer', text: faq.answer },
@@ -185,6 +189,7 @@ export function llmsText(full = false) {
     '',
     '## Pages',
     `- [Home](${siteConfig.url}/): overview, services, products, modernization, safety audit, reviews and gallery`,
+    `- [Lift safety](${siteConfig.url}/safety): free safety audit, lift safety systems explained, warning signs, what to do if stuck in a lift`,
     `- [Products & Services](${siteConfig.url}/products-services): full service list and lift cabin/door range`,
     `- [About](${siteConfig.url}/about): company story, founder, business hours`,
     `- [Contact](${siteConfig.url}/contact): enquiry form, phone, WhatsApp and directions`,
@@ -195,6 +200,14 @@ export function llmsText(full = false) {
         `- ${service.title}${full ? `: ${service.description}` : ''}`,
     ),
     ...services.map((service) => `- ${service}`),
+    '',
+    '## Safety',
+    `- ${safetyAudit.title}: checks ${safetyAudit.checks.join('; ').toLowerCase()}`,
+    `- Warning signs that a lift needs attention: ${warningSigns.join(', ').toLowerCase()}`,
+    `- If stuck in a lift: ${emergencySteps.map((step) => step.title.toLowerCase()).join(', ')}. 24×7 help: ${companyInfo.phone}`,
+    ...(full
+      ? safetySystems.map((system) => `- ${system.name}: ${system.description}`)
+      : []),
     '',
     '## Elevator types',
     ...elevatorTypes.map((type) => `- ${type}`),

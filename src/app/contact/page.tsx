@@ -293,7 +293,7 @@ export default function ContactPage() {
         title="Let's build your elevator"
         accent='elevator'
         description='Tell us about your lift requirement and our engineers will reach back within one business day with a tailored solution.'
-        image='/images/site/gallery/12.webp'
+        image='/images/site/pro/landing-granite.webp'
         imageAlt='Stainless steel lift landing installed by Nishan Lift Solutions'
       >
         <div className='mt-8 flex flex-wrap gap-3'>

@@ -27,8 +27,8 @@ type RevealProps = {
 const offsets = {
   below: { y: 48, x: 0 },
   above: { y: -48, x: 0 },
-  left: { y: 0, x: -48 },
-  right: { y: 0, x: 48 },
+  left: { y: 0, x: -24 },
+  right: { y: 0, x: 24 },
 };
 
 export function Reveal({

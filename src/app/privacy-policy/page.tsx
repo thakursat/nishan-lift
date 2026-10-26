@@ -86,18 +86,6 @@ const sections: { title: string; Icon: ElementType; items: string[] }[] = [
 export default function PrivacyPolicyPage() {
   return (
     <main className='relative min-h-screen bg-(--color-bg) text-(--color-text-primary)'>
-      {/* Global Background Pattern */}
-      <div
-        className='fixed inset-0 z-[-1] pointer-events-none opacity-[0.03]'
-        style={{
-          backgroundImage:
-            'radial-gradient(var(--color-text-primary) 1.5px, transparent 1.5px)',
-          backgroundSize: '32px 32px',
-        }}
-      />
-      <div className='fixed top-0 left-0 w-150 h-150 bg-(--color-accent)/5 blur-[120px] rounded-full pointer-events-none z-[-1]' />
-      <div className='fixed bottom-0 right-0 w-150 h-150 bg-(--color-accent)/5 blur-[120px] rounded-full pointer-events-none z-[-1]' />
-
       <SiteHeader solid />
 
       {/* Hero */}

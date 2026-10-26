@@ -6,12 +6,9 @@ import { breadcrumbGraph } from '@/lib/structured-data';
 import CatalogExplorer from '@/components/site/CatalogExplorer';
 import HallCallCta from '@/components/site/HallCallCta';
 import JsonLd from '@/components/site/JsonLd';
-import Marquee from '@/components/site/Marquee';
 import PageHero from '@/components/site/PageHero';
 import SiteFooter from '@/components/site/SiteFooter';
 import SiteHeader from '@/components/site/SiteHeader';
-
-import { elevatorTypes } from '@/constant/nishan-content';
 
 export const metadata: Metadata = {
   title: 'Lift Products & Services in Jaipur',
@@ -41,19 +38,14 @@ export default function ProductsServicesPage() {
         title='Products and services from the best lift service in Jaipur'
         accent='Jaipur'
         description='Explore Lift Service and Elevator Manufacturer offerings from Nishan Lift Solutions. Ask us about availability, details or your specific needs.'
-        image='/images/site/gallery/02.webp'
+        image='/images/site/pro/landing-steel.webp'
         imageAlt='Golden finish lift cabin by Nishan Lift Solutions'
-      />
-
-      <Marquee
-        items={elevatorTypes}
-        className='font-display bg-(--color-accent) py-4 text-2xl font-extrabold uppercase text-white'
       />
 
       <section
         data-floor='1'
         data-floor-name='Catalogue'
-        className='layout py-16 sm:py-24'
+        className='layout py-24 sm:py-36'
       >
         <Suspense>
           <CatalogExplorer />

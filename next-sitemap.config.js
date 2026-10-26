@@ -41,7 +41,7 @@ module.exports = {
     priority:
       path === '/'
         ? 1
-        : ['/products-services', '/contact'].includes(path)
+        : ['/safety', '/products-services', '/contact'].includes(path)
           ? 0.9
           : path === '/privacy-policy'
             ? 0.3

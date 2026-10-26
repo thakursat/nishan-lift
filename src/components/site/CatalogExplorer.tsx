@@ -65,7 +65,7 @@ export default function CatalogExplorer() {
         <div
           role='tablist'
           aria-label='Catalogue'
-          className='steel-dark flex w-full rounded-full p-1.5 ring-1 ring-black/10 sm:w-auto'
+          className='flex w-full rounded-full bg-(--color-ink) p-1.5 sm:w-auto'
         >
           {(['services', 'products'] as const).map((value) => (
             <button
@@ -82,7 +82,7 @@ export default function CatalogExplorer() {
               {tab === value && (
                 <motion.span
                   layoutId='catalog-tab'
-                  className='absolute inset-0 rounded-full bg-(--color-accent) shadow-[0_0_20px_rgba(196,0,0,0.6)]'
+                  className='absolute inset-0 rounded-full bg-(--color-accent)'
                   transition={{ type: 'spring', stiffness: 320, damping: 30 }}
                 />
               )}
@@ -157,10 +157,8 @@ export default function CatalogExplorer() {
                   </div>
                 )}
                 {!item.image && (
-                  <span className='steel flex h-12 w-12 shrink-0 items-center justify-center rounded-full shadow-[inset_0_2px_3px_rgba(255,255,255,0.7)]'>
-                    <span className='led text-base'>
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
+                  <span className='flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-(--color-accent)/10 text-sm font-semibold text-(--color-accent)'>
+                    {String(index + 1).padStart(2, '0')}
                   </span>
                 )}
                 <div
@@ -175,7 +173,7 @@ export default function CatalogExplorer() {
                       className={cn(
                         'font-semibold',
                         item.description
-                          ? 'font-display text-2xl uppercase sm:text-3xl'
+                          ? 'text-2xl sm:text-3xl'
                           : 'text-sm sm:text-base',
                       )}
                     >
@@ -189,7 +187,7 @@ export default function CatalogExplorer() {
                   </div>
                   <Link
                     href='/contact'
-                    className='flex w-fit items-center gap-1.5 text-xs font-bold uppercase tracking-[0.2em] text-(--color-accent)'
+                    className='flex w-fit items-center gap-1.5 text-sm font-semibold text-(--color-accent)'
                   >
                     Enquire
                     <ArrowUpRight className='h-3.5 w-3.5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5' />

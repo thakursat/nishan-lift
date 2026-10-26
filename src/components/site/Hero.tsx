@@ -1,212 +1,124 @@
 'use client';
 
-import { ArrowUpRight, Phone, Star } from 'lucide-react';
-import { AnimatePresence, motion, useScroll, useTransform } from 'motion/react';
+import { ArrowRight, Phone, ShieldCheck, Star } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 
-import LiftShaft from '@/components/site/LiftShaft';
-import { CountUp, SplitHeading } from '@/components/site/Reveal';
+import { SplitHeading } from '@/components/site/Reveal';
 
-import { companyInfo, metrics, rating } from '@/constant/nishan-content';
+import { companyInfo, rating } from '@/constant/nishan-content';
 
-const slides = [
-  { src: '/images/site/hero-cabin.webp', caption: 'Designer SS cabin' },
-  { src: '/images/site/golden-cabin.webp', caption: 'Golden finish interior' },
-  { src: '/images/site/landing-door.webp', caption: 'Marble-clad landing' },
-  { src: '/images/site/gallery/03.webp', caption: 'Mirror-finish cabin' },
-];
+const LIFT_EASE = [0.65, 0, 0.35, 1] as const;
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
-  const [slide, setSlide] = useState(0);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end start'],
   });
-  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
-  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '40%']);
-  const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-
-  useEffect(() => {
-    const timer = window.setInterval(
-      () => setSlide((current) => (current + 1) % slides.length),
-      5000,
-    );
-    return () => window.clearInterval(timer);
-  }, []);
+  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
+  const fade = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
     <section
       ref={ref}
       data-floor='G'
       data-floor-name='Lobby'
-      className='grain relative isolate flex min-h-svh flex-col overflow-hidden bg-(--color-ink) text-white'
+      className='relative isolate flex min-h-svh items-end overflow-hidden bg-(--color-ink) text-white'
     >
       <motion.div className='absolute inset-0 -z-10' style={{ y: imageY }}>
-        <AnimatePresence initial={false}>
-          <motion.div
-            key={slides[slide].src}
-            className='absolute inset-0'
-            initial={{ opacity: 0, clipPath: 'inset(0 50% 0 50%)' }}
-            animate={{ opacity: 1, clipPath: 'inset(0 0% 0 0%)' }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.4, ease: [0.65, 0, 0.35, 1] }}
-          >
-            <Image
-              src={slides[slide].src}
-              alt={slides[slide].caption}
-              fill
-              priority={slide === 0}
-              sizes='100vw'
-              className='ken-burns object-cover'
-            />
-          </motion.div>
-        </AnimatePresence>
-        <div className='absolute inset-0 bg-linear-to-b from-black/70 via-black/45 to-(--color-ink)' />
-        <div className='absolute inset-0 bg-linear-to-r from-black/70 via-transparent to-transparent' />
+        <motion.div
+          className='absolute inset-0'
+          initial={{ clipPath: 'inset(0 50% 0 50%)', scale: 1.08 }}
+          animate={{ clipPath: 'inset(0 0% 0 0%)', scale: 1 }}
+          transition={{ duration: 1.6, ease: LIFT_EASE }}
+        >
+          <Image
+            src='/images/site/pro/lobby-granite.webp'
+            alt='Lift lobby with stainless steel landing doors'
+            fill
+            priority
+            sizes='100vw'
+            className='object-cover object-[30%_center]'
+          />
+        </motion.div>
+        <div className='absolute inset-0 bg-linear-to-t from-(--color-ink) via-black/55 to-black/40' />
+        <div className='absolute inset-0 bg-linear-to-r from-black/60 to-transparent' />
       </motion.div>
-
-      <div className='blueprint absolute inset-0 -z-10 opacity-40' />
 
       <motion.div
-        className='layout relative flex flex-1 flex-col justify-end gap-10 pt-28 pb-10 md:flex-row md:items-center md:justify-between md:pb-16'
-        style={{ y: contentY, opacity: fade }}
+        className='layout w-full pt-40 pb-16 sm:pb-24'
+        style={{ opacity: fade }}
       >
-        <div className='max-w-2xl'>
-          <motion.a
-            href={companyInfo.reviewsUrl}
-            target='_blank'
-            rel='noreferrer'
-            className='inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/10 py-1.5 pr-4 pl-1.5 text-xs font-semibold backdrop-blur-md'
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            <span className='flex items-center gap-1 rounded-full bg-white px-2.5 py-1 text-black'>
-              <Star className='h-3.5 w-3.5 fill-amber-400 text-amber-400' />
-              {rating.score}
-            </span>
-            {rating.count}+ Google reviews
-            <span className='h-1 w-1 rounded-full bg-white/40' />
-            <span className='flex items-center gap-1.5'>
-              <span className='relative flex h-2 w-2'>
-                <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75' />
-                <span className='relative inline-flex h-2 w-2 rounded-full bg-green-500' />
-              </span>
-              Open 24h
-            </span>
-          </motion.a>
+        <motion.p
+          className='flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/70'
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
+          <ShieldCheck className='h-4 w-4 text-(--color-highlight)' />
+          Lift installation · AMC · 24×7 repair
+        </motion.p>
 
-          <SplitHeading
-            as='h1'
-            text='Premium lifts. Built in Jaipur. Serviced 24×7.'
-            accent='24×7.'
-            delay={0.35}
-            className='font-display mt-6 text-[3.4rem] leading-[0.92] font-extrabold uppercase sm:text-7xl lg:text-8xl'
-          />
+        <SplitHeading
+          as='h1'
+          text='Safe, reliable lifts for every building in Jaipur.'
+          accent='Safe,'
+          delay={0.45}
+          className='mt-6 max-w-3xl text-[2.6rem] leading-[1.05] font-semibold sm:text-6xl lg:text-7xl'
+        />
 
-          <motion.p
-            className='mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg'
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.8 }}
-          >
-            {companyInfo.name} designs, installs, modernizes and maintains
-            passenger, home, hospital and goods elevators across Jaipur, Ajmer,
-            Sikar and Jhunjhunu.
-          </motion.p>
-
-          <motion.div
-            className='mt-8 flex flex-col gap-3 min-[420px]:flex-row'
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.05, duration: 0.8 }}
-          >
-            <Link
-              href='/contact'
-              className='group sheen flex items-center justify-center gap-2 rounded-full bg-(--color-accent) px-7 py-4 text-sm font-bold shadow-[0_0_40px_rgba(196,0,0,0.5)] transition hover:bg-(--color-accent-strong)'
-            >
-              Get a free quote
-              <ArrowUpRight className='h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5' />
-            </Link>
-            <a
-              href={companyInfo.phoneHref}
-              className='group flex items-center justify-center gap-3 rounded-full border border-white/20 bg-white/5 py-2 pr-6 pl-2 text-sm font-bold backdrop-blur-md transition hover:bg-white/10'
-            >
-              <span className='steel flex h-10 w-10 items-center justify-center rounded-full text-black/80 shadow-[inset_0_2px_3px_rgba(255,255,255,0.7)]'>
-                <span className='flex h-7 w-7 items-center justify-center rounded-full ring-2 ring-[#ff3b3b] shadow-[0_0_12px_rgba(255,40,40,0.8)] transition group-hover:shadow-[0_0_20px_rgba(255,40,40,1)]'>
-                  <Phone className='h-3.5 w-3.5' />
-                </span>
-              </span>
-              {companyInfo.phone}
-            </a>
-          </motion.div>
-        </div>
+        <motion.p
+          className='mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg'
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.8 }}
+        >
+          {companyInfo.name} installs, modernizes and maintains passenger, home,
+          hospital and goods lifts — with engineers on call around the clock.
+        </motion.p>
 
         <motion.div
-          className='hidden shrink-0 md:block'
-          initial={{ opacity: 0, y: 60 }}
+          className='mt-10 flex flex-col gap-3 sm:flex-row'
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 1.2, ease: [0.65, 0, 0.35, 1] }}
+          transition={{ delay: 1.05, duration: 0.8 }}
         >
-          <div className='rounded-[2rem] bg-black/40 p-5 ring-1 ring-white/10 backdrop-blur-md'>
-            <LiftShaft />
-            <p className='mt-4 text-center text-[10px] font-semibold uppercase tracking-[0.35em] text-white/40'>
-              Traction lift · live
-            </p>
-          </div>
-        </motion.div>
-      </motion.div>
-
-      {/* LED stats strip */}
-      <div className='relative border-t border-white/10 bg-black/50 backdrop-blur-md'>
-        <div className='layout grid grid-cols-2 sm:grid-cols-4'>
-          {metrics.map((metric, index) => (
-            <div
-              key={metric.label}
-              className={`flex flex-col gap-0.5 py-4 sm:py-5 ${
-                index % 2 === 1 ? 'border-l border-white/10 pl-4' : ''
-              } ${index >= 2 ? 'border-t border-white/10 sm:border-t-0' : ''} ${
-                index === 2 ? 'sm:border-l sm:pl-4' : ''
-              }`}
-            >
-              <CountUp
-                value={metric.value}
-                decimals={metric.decimals}
-                suffix={metric.suffix}
-                className='led text-3xl sm:text-4xl'
-              />
-              <span className='text-[10px] font-semibold uppercase tracking-[0.25em] text-white/50'>
-                {metric.label}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* slide pager */}
-      <div className='absolute top-24 right-4 hidden flex-col gap-2 sm:flex md:top-auto md:right-auto md:bottom-28 md:left-1/2 md:-translate-x-1/2 md:flex-row'>
-        {slides.map((item, index) => (
-          <button
-            key={item.src}
-            type='button'
-            aria-label={`Show ${item.caption}`}
-            onClick={() => setSlide(index)}
-            className='h-1.5 w-8 overflow-hidden rounded-full bg-white/20'
+          <Link
+            href='/contact'
+            className='group flex items-center justify-center gap-2 rounded-full bg-(--color-accent) px-7 py-4 text-sm font-semibold transition hover:bg-(--color-accent-strong)'
           >
-            {index === slide && (
-              <motion.span
-                className='block h-full bg-white'
-                initial={{ width: '0%' }}
-                animate={{ width: '100%' }}
-                transition={{ duration: 5, ease: 'linear' }}
-              />
-            )}
-          </button>
-        ))}
-      </div>
+            Book a free safety audit
+            <ArrowRight className='h-4 w-4 transition group-hover:translate-x-0.5' />
+          </Link>
+          <a
+            href={companyInfo.phoneHref}
+            className='flex items-center justify-center gap-2 rounded-full border border-white/25 px-7 py-4 text-sm font-semibold transition hover:bg-white/10'
+          >
+            <Phone className='h-4 w-4' />
+            24×7 helpline {companyInfo.phone}
+          </a>
+        </motion.div>
+
+        <motion.ul
+          className='mt-14 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/15 pt-6 text-sm text-white/70'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.3, duration: 0.8 }}
+        >
+          <li className='flex items-center gap-2'>
+            <Star className='h-4 w-4 fill-amber-400 text-amber-400' />
+            {rating.score} on Google · {rating.count}+ reviews
+          </li>
+          <li className='flex items-center gap-2'>
+            <span className='h-2 w-2 rounded-full bg-green-400' />
+            Open 24 hours, 7 days
+          </li>
+          <li>{companyInfo.serviceAreas.join(' · ')}</li>
+        </motion.ul>
+      </motion.div>
     </section>
   );
 }

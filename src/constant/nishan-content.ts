@@ -30,6 +30,7 @@ export const companyInfo = {
 
 export const quickLinks = [
   { href: '/', label: 'Home' },
+  { href: '/safety', label: 'Safety' },
   { href: '/products-services', label: 'Products & Services' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
@@ -61,19 +62,19 @@ export const featuredServices = [
     title: 'Commercial & Residential Elevator Installation',
     description:
       'End-to-end design, manufacturing, and installation of premium passenger and freight elevators for commercial complexes, hospitals, and residential buildings. We ensure compliance with all safety regulations, offering energy-efficient lifts customized to your architectural requirements.',
-    image: '/images/site/golden-cabin.webp',
+    image: '/images/site/pro/landing-steel.webp',
   },
   {
     title: 'Emergency Lift Repair & Maintenance (AMC)',
     description:
       "Don't let a broken lift disrupt your building. We provide rapid-response emergency repair services and comprehensive Annual Maintenance Contracts (AMC). Our preventive maintenance ensures smooth operation, reduces downtime, and extends the lifespan of your elevators.",
-    image: '/images/site/machine.webp',
+    image: '/images/site/pro/machine.webp',
   },
   {
     title: 'Elevator Modernization & Upgrades',
     description:
       'Upgrade your aging lifts with modern technology. We modernize outdated elevator systems to improve safety, speed, and energy efficiency. From cabin aesthetic upgrades to advanced control system replacements, we bring your old lifts up to modern standards.',
-    image: '/images/site/after.webp',
+    image: '/images/site/pro/landing-granite.webp',
   },
 ];
 
@@ -117,11 +118,20 @@ export const products = [
   },
 ];
 
-export const galleryImages = Array.from(
-  { length: 32 },
-  (_, index) =>
-    `/images/site/gallery/${String(index + 1).padStart(2, '0')}.webp`,
-);
+export const galleryImages = [
+  '/images/site/pro/cabin-signature.webp',
+  '/images/site/pro/landing-granite.webp',
+  '/images/site/pro/cabin-mirror.webp',
+  '/images/site/pro/landing-steel.webp',
+  '/images/site/pro/cabin-ceiling.webp',
+  '/images/site/pro/landing-wood.webp',
+  '/images/site/pro/landing-marble.webp',
+  '/images/site/pro/cabin-golden.webp',
+  '/images/site/pro/machine.webp',
+  '/images/site/gallery/12.webp',
+  '/images/site/gallery/20.webp',
+  '/images/site/gallery/24.webp',
+];
 
 export const highlights = [
   '24/7 Quick Response',
@@ -247,5 +257,86 @@ export const faqs = [
     question: 'How do I get a quote from Nishan Lift Solutions?',
     answer:
       'Call or WhatsApp +91 99280 58124, or fill in the enquiry form on the contact page. Consultation is free and engineers reply within one business day.',
+  },
+];
+
+export const safetyPillars = [
+  {
+    title: 'Built to code',
+    description:
+      'Every passenger and freight lift is designed and installed in compliance with all applicable safety regulations, and customized to your building.',
+  },
+  {
+    title: 'Maintained before it fails',
+    description:
+      'Annual Maintenance Contracts with preventive maintenance catch wear early, reduce downtime and extend the life of your lift.',
+  },
+  {
+    title: 'Help at any hour',
+    description:
+      'Open 24 hours, every day. A breakdown or a trapped passenger gets a rapid emergency response from our engineers.',
+  },
+];
+
+export const warningSigns = [
+  'Frequent breakdowns',
+  'Unusual noises',
+  'Jerky starts or stops',
+  'Doors that misalign or hesitate',
+];
+
+/** General lift safety systems, explained for building owners. */
+export const safetySystems = [
+  {
+    name: 'Door interlocks',
+    description:
+      'The lift cannot move unless both the landing door and the car door are closed and locked.',
+  },
+  {
+    name: 'Door sensors',
+    description:
+      'A sensor across the doorway reopens the doors if a person or object is in the way.',
+  },
+  {
+    name: 'Automatic Rescue Device (ARD)',
+    description:
+      'During a power cut, the ARD brings the car to the nearest floor and opens the doors.',
+  },
+  {
+    name: 'Overspeed governor & safety gear',
+    description:
+      'If the car ever travels faster than it should, the governor trips the safety gear to stop it on the guide rails.',
+  },
+  {
+    name: 'Pit buffers',
+    description:
+      'Buffers at the bottom of the shaft absorb energy if the car travels past the lowest floor.',
+  },
+  {
+    name: 'Alarm & emergency light',
+    description:
+      'An alarm button and emergency lighting inside the car keep passengers connected and able to see.',
+  },
+];
+
+export const emergencySteps = [
+  {
+    title: 'Stay calm',
+    description:
+      'Lifts have several independent safety systems. You have air, and help is on the way.',
+  },
+  {
+    title: 'Press the alarm',
+    description:
+      'Use the bell or alarm button in the car to alert people in the building.',
+  },
+  {
+    title: 'Call for help',
+    description: `Call building security, or Nishan Lift Solutions 24×7 on +91 99280 58124.`,
+  },
+  {
+    title: 'Don’t force the doors',
+    description:
+      'Never try to prise the doors open or climb out. Wait for a trained technician.',
   },
 ];

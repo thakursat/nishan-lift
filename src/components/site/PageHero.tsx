@@ -37,7 +37,7 @@ export default function PageHero({
       ref={ref}
       data-floor='G'
       data-floor-name='Lobby'
-      className='grain relative isolate flex min-h-[78svh] items-end overflow-hidden bg-(--color-ink) text-white'
+      className='relative isolate flex min-h-[70svh] items-end overflow-hidden bg-(--color-ink) text-white'
     >
       <motion.div className='absolute inset-0 -z-10' style={{ y }}>
         <motion.div
@@ -52,16 +52,15 @@ export default function PageHero({
             fill
             priority
             sizes='100vw'
-            className='ken-burns object-cover'
+            className='object-cover'
           />
         </motion.div>
-        <div className='absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-(--color-ink)' />
+        <div className='absolute inset-0 bg-linear-to-t from-(--color-ink) via-black/55 to-black/45' />
       </motion.div>
-      <div className='blueprint absolute inset-0 -z-10 opacity-40' />
 
-      <div className='layout pt-32 pb-14 sm:pb-20'>
+      <div className='layout w-full pt-40 pb-16 sm:pb-24'>
         <motion.p
-          className='text-xs font-bold uppercase tracking-[0.4em] text-white/60'
+          className='text-xs font-semibold uppercase tracking-[0.2em] text-white/60'
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
@@ -73,7 +72,7 @@ export default function PageHero({
           text={title}
           accent={accent}
           delay={0.3}
-          className='font-display mt-4 max-w-4xl text-5xl leading-[0.92] font-extrabold uppercase sm:text-7xl'
+          className='mt-5 max-w-3xl text-4xl leading-[1.05] font-semibold sm:text-6xl'
         />
         {description && (
           <motion.p

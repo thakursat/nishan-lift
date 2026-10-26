@@ -58,6 +58,8 @@ describe('llms.txt', () => {
     expect(text).toContain('+91 99280 58124');
     products.forEach((product) => expect(text).toContain(product.name));
     expect(text).toContain('/llms-full.txt');
+    expect(text).toContain('/safety');
+    expect(text).toContain('Emergency rescue systems (ARD)'.toLowerCase());
   });
 
   it('includes FAQs and reviews in the full version', () => {
@@ -65,5 +67,6 @@ describe('llms.txt', () => {
     faqs.forEach((faq) => expect(text).toContain(faq.question));
     expect(text).toContain('Kiana Jewels');
     expect(text).not.toContain('## Optional');
+    expect(text).toContain('Overspeed governor & safety gear');
   });
 });
